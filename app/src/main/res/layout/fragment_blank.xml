@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginTop="10dp">
 
-    <!-- TODO: Update blank fragment layout -->
+
     <TextView
         android:id="@+id/birth_date_label"
         android:layout_width="match_parent"
