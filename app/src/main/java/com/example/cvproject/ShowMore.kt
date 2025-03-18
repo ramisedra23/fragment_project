@@ -17,7 +17,7 @@ class MoreInfoFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_blank, container, false)
+        val view = inflater.inflate(R.layout.fragment_showmore, container, false)
 
         val btnLinkedIn: Button = view.findViewById(R.id.open_linkedin)
         btnLinkedIn.setOnClickListener {

@@ -15,4 +15,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "CVProject"
 include(":app")
+
  

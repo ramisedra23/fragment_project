@@ -15,7 +15,7 @@ class ProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_blank2, container, false)
+        val view = inflater.inflate(R.layout.fragment_profile, container, false)
 
         val btnShowMore: Button = view.findViewById(R.id.fragment1btn)
         btnShowMore.setOnClickListener {
