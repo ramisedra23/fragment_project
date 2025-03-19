@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.appcompat.widget.Toolbar
 import androidx.navigation.fragment.findNavController
 
 class MoreInfoFragment : Fragment(R.layout.fragment_showmore) {
@@ -21,14 +22,19 @@ class MoreInfoFragment : Fragment(R.layout.fragment_showmore) {
         val view = inflater.inflate(R.layout.fragment_showmore, container, false)
 
         val btnLinkedIn: Button = view.findViewById(R.id.open_linkedin)
-        val btnBack: Button = view.findViewById(R.id.btnback)
+
+        val toolbar = view.findViewById<Toolbar>(R.id.toolbar)
+        toolbar.setNavigationOnClickListener {
+            findNavController().navigateUp()
+        }
+
         btnLinkedIn.setOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://jo.linkedin.com/in/rami-raed-02b0b7225"))
             startActivity(intent)
         }
-        btnBack?.setOnClickListener {
-            findNavController().navigateUp()
-        }
+
+
+
 
         return view
     }
