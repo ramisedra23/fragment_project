@@ -12,14 +12,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        if (savedInstanceState == null) {
-            loadFragment(ProfileFragment()) // Show ProfileFragment on launch
-        }
-    }
 
-    private fun loadFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.fragmentcontainer, fragment)
-            .commit()
+        
     }
 }

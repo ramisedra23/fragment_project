@@ -10,7 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 
-class MoreInfoFragment : Fragment() {
+class MoreInfoFragment : Fragment(R.layout.fragment_showmore) {
 
     @SuppressLint("MissingInflatedId")
     override fun onCreateView(
@@ -21,7 +21,6 @@ class MoreInfoFragment : Fragment() {
 
         val btnLinkedIn: Button = view.findViewById(R.id.open_linkedin)
         btnLinkedIn.setOnClickListener {
-            val linkedInUrl = "https://www.linkedin.com/in/your-profile"
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://jo.linkedin.com/in/rami-raed-02b0b7225"))
             startActivity(intent)
         }
