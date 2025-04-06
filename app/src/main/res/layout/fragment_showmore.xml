@@ -1,53 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/showmore"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/appBar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <com.google.android.material.appbar.AppBarLayout
+<androidx.constraintlayout.widget.ConstraintLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-                <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/toolbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize"
-                    android:background="@color/white"
-                    app:navigationIcon="?attr/homeAsUpIndicator" />
-
-            </com.google.android.material.appbar.AppBarLayout>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:id="@+id/showmore">
 
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/con2"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_margin="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/appBar">
 
-
-            <TextView
+        <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/white"
+                app:navigationIcon="?attr/homeAsUpIndicator"
+                app:layout_constraintBaseline_toTopOf="parent"
+                tools:ignore="MissingConstraints"/>
+        <TextView
                 android:id="@+id/birth_date_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -56,9 +27,9 @@
                 android:textSize="20dp"
                 android:layout_marginTop="10dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
-            <EditText
+        <EditText
                 android:id="@+id/birth_date"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
@@ -70,7 +41,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/birth_date_label" />
 
-            <TextView
+        <TextView
                 android:id="@+id/uni_name_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -81,7 +52,7 @@
                 app:layout_constraintBottom_toTopOf="@id/uni_name"
                 app:layout_constraintTop_toBottomOf="@+id/birth_date" />
 
-            <EditText
+        <EditText
                 android:id="@+id/uni_name"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
@@ -93,7 +64,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/uni_name_label" />
 
-            <TextView
+        <TextView
                 android:id="@+id/linked_in_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -103,7 +74,7 @@
                 android:textSize="20dp"
                 app:layout_constraintTop_toBottomOf="@+id/uni_name" />
 
-            <Button
+        <Button
                 android:id="@+id/open_linkedin"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
@@ -114,10 +85,4 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linked_in_label" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

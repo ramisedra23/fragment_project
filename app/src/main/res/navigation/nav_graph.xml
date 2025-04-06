@@ -11,28 +11,9 @@
     tools:layout="@layout/fragment_start">
     <action
         app:destination="@+id/profileFragment"
-        android:id="@+id/action_StarFragment_to_ProfileInfo_Fragment">
+        android:id="@+id/action_StarFragment_to_ProfileInfoFragment">
 
-        <argument
-            android:name="firstName"
-            android:defaultValue="empty string"
-            app:argType="string"/>
-        <argument
-            android:name="lastName"
-            android:defaultValue="empty string"
-            app:argType="string"/>
-        <argument
-            android:name="email"
-            android:defaultValue="empty string"
-            app:argType="string"/>
-        <argument
-            android:name="phoneNumber"
-            android:defaultValue="empty string"
-            app:argType="string"/>
-        <argument
-            android:name="imageUri"
-            android:defaultValue="empty string"
-            app:argType = "string" />
+
 
     </action>
 
@@ -42,47 +23,16 @@
     <fragment
         android:id="@+id/profileFragment"
         android:label="Profile"
-        android:name="com.example.cvproject.ProfileInfo_Fragment"
+        android:name="com.example.cvproject.ProfileInfoFragment"
         tools:layout="@layout/fragment_profile">
         <argument
-            android:name="firstName"
-            android:defaultValue="empty string"
-            app:argType="string"/>
-        <argument
-            android:name="lastName"
-            android:defaultValue="empty string"
-            app:argType="string"/>
-        <argument
-            android:name="email"
-            android:defaultValue="empty string"
-            app:argType="string"/>
-        <argument
-            android:name="phoneNumber"
-            android:defaultValue="empty string"
-            app:argType="string"/>
-        <argument
-            android:name="imageUri"
-            android:defaultValue="empty string"
-            app:argType="string" />
+            android:name="userData"
+            app:argType="java.io.Serializable"
+            app:nullable="false" />
+
 
 
         <action app:destination="@id/moreInfoFragment" android:id="@+id/action_profileFragment_to_moreInfoFragment">
-
-            <argument
-                android:name="birthDate"
-                android:defaultValue="empty string"
-                app:argType="string"/>
-            <argument
-                android:name="universityName"
-                android:defaultValue="empty string"
-                app:argType="string"/>
-            <argument
-                android:name="linkedIn"
-                android:defaultValue="empty string"
-                app:argType="string"/>
-
-
-
 
 
         </action>
@@ -92,20 +42,12 @@
     <fragment
         android:id="@+id/moreInfoFragment"
         android:label="More Info"
-        android:name="com.example.cvproject.ShowMore_Fragment"
+        android:name="com.example.cvproject.ShowMoreFragment"
         tools:layout="@layout/fragment_showmore">
         <argument
-            android:name="birthDate"
-            android:defaultValue="empty string"
-            app:argType="string"/>
-        <argument
-            android:name="universityName"
-            android:defaultValue="empty string"
-            app:argType="string"/>
-        <argument
-            android:name="linkedIn"
-            android:defaultValue="empty string"
-            app:argType="string"/>
+            android:name="userData"
+            app:argType="java.io.Serializable"
+            app:nullable="false" />
         
 
     </fragment>
