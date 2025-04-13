@@ -32,11 +32,9 @@ class StartFragment : Fragment() {
 
         databaseHelper = DatabaseHelper(requireContext())
 
-        // Setup RecyclerView
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         cvList = databaseHelper.getAllCV().toMutableList()
 
-        // ✅ Set up adapter with click listener here:
         adapter = Adapter(cvList, databaseHelper) { selectedCV ->
             val bundle = Bundle().apply {
                 putString("firstName", selectedCV.firstName)
@@ -52,7 +50,6 @@ class StartFragment : Fragment() {
 
         binding.recyclerView.adapter = adapter
 
-        // Floating action button for adding new CV
         binding.fabAdd.setOnClickListener {
             findNavController().navigate(R.id.action_StartFragment_to_AddNoteFragment)
         }

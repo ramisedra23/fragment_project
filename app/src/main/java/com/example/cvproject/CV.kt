@@ -1,5 +1,4 @@
 
-import com.example.cvproject.R
 import java.io.Serializable
 
 data class CV(
