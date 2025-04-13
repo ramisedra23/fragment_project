@@ -1,6 +1,6 @@
 package com.example.cvproject
 
-import UserData
+import CV
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
@@ -11,33 +11,38 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.fragment.findNavController
+import com.example.cvproject.databinding.FragmentShowmoreBinding
 
 class ShowMoreFragment : Fragment(R.layout.fragment_showmore) {
 
-    @SuppressLint("MissingInflatedId")
+    private lateinit var binding: FragmentShowmoreBinding
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
+        // Initialize views
+        binding = FragmentShowmoreBinding.bind(view)
 
-        val btnLinkedIn: Button = view.findViewById(R.id.open_linkedin)
-        val userData = arguments?.getSerializable("userData") as? UserData
+        // Retrieve data from arguments
+        val birthDate = arguments?.getString("BIRTH_DATE") ?: "Not Provided"
+        val university = arguments?.getString("UNIVERSITY") ?: "Not Provided"
+        val linkedIn = arguments?.getString("LINKEDIN_URL") ?: ""
 
-        userData?.let {
-            view.findViewById<EditText>(R.id.birth_date).setText(it.birthDate)
-            view.findViewById<EditText>(R.id.uni_name).setText(it.uniName)
-            val intent = Intent(
-                Intent.ACTION_VIEW,
-                Uri.parse(it.linkedIn)
-            )
-            startActivity(intent)
-        }
+        // Display the retrieved data in the TextViews
+        binding.birthDate.setText("$birthDate")
+        binding.uniName.setText("$university")
 
-        val toolbar = view.findViewById<Toolbar>(R.id.toolbar)
-        toolbar.setNavigationOnClickListener {
-            findNavController().navigateUp()
+        binding.openLinkedin.setOnClickListener {
+            if (linkedIn.isNotEmpty()) {
+                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(linkedIn))
+                startActivity(browserIntent)
+            } else {
+                Toast.makeText(requireContext(), "LinkedIn URL not provided", Toast.LENGTH_SHORT).show()
+            }
         }
     }
-
-
 }

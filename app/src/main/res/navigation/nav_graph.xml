@@ -9,21 +9,42 @@
     android:id="@+id/StartFragment"
     android:name="com.example.cvproject.StartFragment"
     tools:layout="@layout/fragment_start">
+    <argument
+        android:name="userData"
+        app:argType="java.io.Serializable"
+        app:nullable="false" />
     <action
         app:destination="@+id/profileFragment"
         android:id="@+id/action_StarFragment_to_ProfileInfoFragment">
+        <argument
+            android:name="userData"
+            app:argType="java.io.Serializable"
+            app:nullable="false" />
+    </action>
 
-
-
+    <action
+        app:destination="@+id/AddFragment"
+        android:id="@+id/action_StartFragment_to_AddNoteFragment">
     </action>
 
 </fragment>
 
+    <fragment
+        android:id="@+id/AddFragment"
+        android:name="com.example.cvproject.AddNoteFragment"
+        tools:layout="@layout/fragment_add_note">
+
+        <action
+            app:destination="@+id/StartFragment"
+            android:id="@+id/action_AddNoteFragment_to_StartFragment">
+
+        </action>
+    </fragment>
 
     <fragment
         android:id="@+id/profileFragment"
         android:label="Profile"
-        android:name="com.example.cvproject.ProfileInfoFragment"
+        android:name="com.example.cvproject.PersonalInfoFragment"
         tools:layout="@layout/fragment_profile">
         <argument
             android:name="userData"

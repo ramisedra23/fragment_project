@@ -1,28 +1,76 @@
 package com.example.cvproject
 
-import UserData
-import android.annotation.SuppressLint
+import CV
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.cvproject.databinding.FragmentStartBinding
 
+class StartFragment : Fragment() {
 
-class StartFragment : Fragment(R.layout.fragment_start) {
+    private var _binding: FragmentStartBinding? = null
+    private val binding get() = _binding!!
+
+    private lateinit var adapter: Adapter
+    private lateinit var databaseHelper: DatabaseHelper
+    private lateinit var cvList: MutableList<CV>
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentStartBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        val button = view.findViewById<Button>(R.id.see_InfoBtn)
+        databaseHelper = DatabaseHelper(requireContext())
 
-        button.setOnClickListener {
-            val user = UserData()
-            val action = StartFragmentDirections.actionStarFragmentToProfileInfoFragment(user)
-            findNavController().navigate(action)
+        // Setup RecyclerView
+        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        cvList = databaseHelper.getAllCV().toMutableList()
+
+        // ✅ Set up adapter with click listener here:
+        adapter = Adapter(cvList, databaseHelper) { selectedCV ->
+            val bundle = Bundle().apply {
+                putString("firstName", selectedCV.firstName)
+                putString("lastName", selectedCV.lastName)
+                putString("email", selectedCV.email)
+                putString("phone", selectedCV.phoneNumber)
+                putString("birthDate",selectedCV.birthDate)
+                putString("uniName",selectedCV.uniName)
+                putString("linkedIn",selectedCV.linkedIn)
+            }
+            findNavController().navigate(R.id.action_StarFragment_to_ProfileInfoFragment, bundle)
+        }
+
+        binding.recyclerView.adapter = adapter
+
+        // Floating action button for adding new CV
+        binding.fabAdd.setOnClickListener {
+            findNavController().navigate(R.id.action_StartFragment_to_AddNoteFragment)
         }
     }
+
+    override fun onResume() {
+        super.onResume()
+        refreshCVList()
+    }
+
+    private fun refreshCVList() {
+        cvList.clear()
+        cvList.addAll(databaseHelper.getAllCV())
+        adapter.notifyDataSetChanged()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }
-
-
